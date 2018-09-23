@@ -1,0 +1,12 @@
+# compile the code
+gcc -z execstack -fno-stack-protector -mpreferred-stack-boundary=2 -g vuln.c -o vuln
+
+# clean the environment, debug
+chmod +x envexec.sh
+./envexec.sh -d vuln
+
+# clean the environment, execute exploit
+./envexec.sh /root/vuln $(python ...)
+
+# run gdb, load a program to analyze
+gdb vuln
